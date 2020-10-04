@@ -52,7 +52,7 @@ var orm = {
         queryString += cols.toString();
         queryString += ") ";
         queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
+        queryString += printQuestionMarks(vals.length -1);
         queryString += ") ";
 
         console.log(queryString);
