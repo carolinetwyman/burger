@@ -24,7 +24,7 @@ var burger = {
       cb(res);
     });
   }
-};
+}
 
 
 // * Also inside `burger.js`, create the code that will call the ORM 
