@@ -1,8 +1,8 @@
-var express = require('express');
+var express = require("express");
 // /usr/local/mysql/bin/mysql -uroot -p had to use this command instead of mysql
 
-var expressHandlebars = require('express-handlebars');
-var burger_db = require('./config/connection')
+var expressHandlebars = require("express-handlebars");
+var burger_db = require("./config/connection")
 
 var burgerapp = express();
 
