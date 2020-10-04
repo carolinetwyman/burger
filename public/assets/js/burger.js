@@ -2,10 +2,17 @@
 $(function() {
     $(".change-devoured").on("click", function(event) {
       var id = $(this).data("id");
-      var newDevoured = $(this).data("newDevoured");
+      var devouredState = $(this).data("devoured");
   
+    var truthy = 0 
+    if (devouredState === 1){
+        truthy = 0;
+    }
+    if (devouredState === 0){
+        truthy = 1;
+    }
       var newDevouredState = {
-        sleepy: newDevoured
+        devoured: truthy
       };
   
       // Send the PUT request.
@@ -14,7 +21,7 @@ $(function() {
         data: newDevouredState
       }).then(
         function() {
-          console.log("changed devoured to", newDevoured);
+          console.log("changed devoured to", newDevouredState);
           // Reload the page to get the updated list
           location.reload();
         }
@@ -26,8 +33,7 @@ $(function() {
       event.preventDefault();
   
       var newBurger = {
-        name: $("#burger").val().trim(),
-        devoured: $("devoured=true").val().trim()
+        name: $("#inputBurger").val().trim(),
       };
   
       // Send the POST request.
