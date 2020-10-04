@@ -1,47 +1,77 @@
-<header>
-    <h1>burgers!</h1>
-</header>
+<h1>burgers!</h1>
+
 
 <main>
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <ul>
+                <div class="row">
                     {{#each burger}}
                     {{#unless devoured}}
-                    {{> burgers/burger-block devoured=false}}
+                    <li>
+
+                        {{!-- displaying the burger name --}}
+                        {{burger_name}}
+
+                        {{!-- creating a button with several properties pertaining to the burger's id and devoured status --}}
+                        <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+                            {{!-- Creating a conditional that determines the text to display, based on the burger's devoured status--}}
+                            {{#unless devoured}} EAT ME! {{else}} un eat me? {{/unless}}
+                        </button>
+
+                        {{!-- creating a button with properties pertaining to the burger's id --}}
+                        <button class="delete-burger" data-id="{{id}}">DELETE!</button>
+
+                    </li>
                     {{/unless}}
                     {{/each}}
-                </ul>
-
-                <h2>burgers that are eated!</h2>
-
-                <ul>
-                    {{#each burger}}
-                    {{#if devoured}}
-                    {{> burgers/burger-block devoured=true}}
+                </div>
+                <div class="col-md-6 text-center" class="task">
+                    {{#each burger_data}}
+                    {{#if this.devoured}}
+                    <input class="form-control" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
                     {{/if}}
                     {{/each}}
-                </ul>
+                </div>
             </div>
         </div>
+
+        <h2>burgers that are eaten!</h2>
+
+        <ul>
+            {{#each burger}}
+            {{#if devoured}}
+                    <li>
+
+                        {{!-- displaying the burger name --}}
+                        {{burger_name}}
+
+                        {{!-- creating a button with several properties pertaining to the burger's id and devoured status --}}
+                        <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
+                            {{!-- Creating a conditional that determines the text to display, based on the burger's devoured status--}}
+                            {{#unless devoured}} EAT ME! {{else}} un eat me? {{/unless}}
+                        </button>
+
+                        {{!-- creating a button with properties pertaining to the burger's id --}}
+                        <button class="delete-burger" data-id="{{id}}">DELETE!</button>
+
+                    </li>
+            {{/if}}
+            {{/each}}
+        </ul>
     </div>
+    </div>
+    </div>
+
     <section id="input">
         <h2>Add a burger</h2>
         <form class="create-form">
-
-            <div class="form-group">
-                <label for="ca">burger Name:</label>
-                <input type="text" id="ca" name="name">
-            </div>
-
-            <div class="form-group">
-                <label for="sleepy">Sleepy?</label><br>
-                <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-                <input type="radio" name="sleepy" value="0"> Awake
-            </div>
-
-            <button type="submit">Add burger</button>
+            <form action='/burgers/create' method='POST'>
+                <input id="inputBurger" type="text" name="burger">
+                <button id="submitBurger" type="submit">ORDER</button>
+            </form>
+            <p id="burgerText">Enter a burger creation, and order the burger you want</p>
+            <button id="burgerClear">Clear Eaten Burgers</button>
     </section>
     </form>
 </main>
