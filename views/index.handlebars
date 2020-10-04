@@ -9,19 +9,11 @@
                     {{#each burger}}
                     {{#unless devoured}}
                     <li>
-
-                        {{!-- displaying the burger name --}}
                         {{burger_name}}
-
-                        {{!-- creating a button with several properties pertaining to the burger's id and devoured status --}}
                         <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
-                            {{!-- Creating a conditional that determines the text to display, based on the burger's devoured status--}}
                             {{#unless devoured}} EAT ME! {{else}} un eat me? {{/unless}}
                         </button>
-
-                        {{!-- creating a button with properties pertaining to the burger's id --}}
                         <button class="delete-burger" data-id="{{id}}">DELETE!</button>
-
                     </li>
                     {{/unless}}
                     {{/each}}
@@ -42,17 +34,10 @@
             {{#each burger}}
             {{#if devoured}}
                     <li>
-
-                        {{!-- displaying the burger name --}}
                         {{burger_name}}
-
-                        {{!-- creating a button with several properties pertaining to the burger's id and devoured status --}}
                         <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">
-                            {{!-- Creating a conditional that determines the text to display, based on the burger's devoured status--}}
                             {{#unless devoured}} EAT ME! {{else}} un eat me? {{/unless}}
                         </button>
-
-                        {{!-- creating a button with properties pertaining to the burger's id --}}
                         <button class="delete-burger" data-id="{{id}}">DELETE!</button>
 
                     </li>
@@ -66,12 +51,11 @@
     <section id="input">
         <h2>Add a burger</h2>
         <form class="create-form">
-            <form action='/burgers/create' method='POST'>
                 <input id="inputBurger" type="text" name="burger">
                 <button id="submitBurger" type="submit">ORDER</button>
             </form>
-            <p id="burgerText">Enter a burger creation, and order the burger you want</p>
-            <button id="burgerClear">Clear Eaten Burgers</button>
+            <p id="descBurger">Enter a burger creation, and order the burger you want</p>
+            <button id="clearBurgers">Clear Eaten Burgers</button>
     </section>
     </form>
 </main>
